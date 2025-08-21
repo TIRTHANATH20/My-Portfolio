@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirtha Nath - Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Ben 10 Inspired Theme - More Subtle Green */
+            --color-bg-dark: #0A0A0A; /* Even darker base */
+            --color-bg-medium: rgba(15, 15, 15, 0.9); /* Darker glass panels with more opacity */
+            --color-text-primary: #FFFFFF; /* Pure white for primary text */
+            --color-text-secondary: #E0E0E0; /* Very light grey for secondary text */
+            --color-accent-primary: #4CAF50; /* Classic Ben 10 Green */
+            --color-accent-secondary: #66BB6A; /* Lighter, more muted green */
+            --color-border-subtle: rgba(76, 175, 80, 0.2); /* Subtle green border */
+            --color-shadow-strong: rgba(0, 0, 0, 0.8); /* Stronger shadows */
+            --color-shadow-light: rgba(0, 0, 0, 0.5); /* More visible light shadows */
+
+            /* Typing text color */
+            --typing-text-color: var(--color-accent-secondary); /* Match accent secondary for typing */
+            --scramble-char-color: #FFD700; /* Neon Yellow for scramble chars */
+
+            /* Digital Binary Stream Colors - Adjusted for Subtlety */
+            --binary-stream-color-1: rgba(76, 175, 80, 0.08); /* Main stream color (less opaque) */
+            --binary-stream-color-2: rgba(102, 187, 106, 0.06); /* Secondary stream color (less opaque) */
+            --binary-stream-color-3: rgba(76, 175, 80, 0.04); /* Tertiary stream color (less opaque) */
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure html and body take full height */
+            cursor: none; /* Hide default cursor for the entire page */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Changed back to Inter */
+            background-color: var(--color-bg-dark); /* Solid dark base background */
+            /* New Abstract Digital Background */
+            background-image:
+                radial-gradient(circle at 15% 50%, var(--binary-stream-color-1) 0%, transparent 20%),
+                radial-gradient(circle at 85% 20%, var(--binary-stream-color-2) 0%, transparent 20%),
+                linear-gradient(135deg, transparent 50%, var(--binary-stream-color-3) 51%, transparent 70%),
+                linear-gradient(45deg, transparent 50%, var(--binary-stream-color-3) 51%, transparent 70%);
+            background-size:
+                100% 100%, /* Radial 1 */
+                100% 100%, /* Radial 2 */
+                200px 200px, /* Diagonal 1 */
+                200px 200px; /* Diagonal 2 */
+            background-position:
+                0 0, 0 0, 0 0, 0 0; /* Initial positions */
+            background-attachment: fixed; /* Crucial for full-page, fixed background */
+            animation:
+                radial-pulse-1 25s linear infinite,
+                radial-pulse-2 30s linear infinite reverse,
+                diagonal-flow-1 15s linear infinite,
+                diagonal-flow-2 18s linear infinite reverse;
+            filter: blur(0.1px); /* Extremely subtle blur */
+            
+            color: var(--color-text-secondary);
+            overflow-x: hidden;
+            font-size: 1.05rem;
+            min-height: 100vh;
+        }
+
+        /* New keyframes for abstract background */
+        @keyframes radial-pulse-1 {
+            0% { background-position: 0% 0%; opacity: 1; }
+            50% { background-position: 100% 100%; opacity: 0.8; }
+            100% { background-position: 0% 0%; opacity: 1; }
+        }
+        @keyframes radial-pulse-2 {
+            0% { background-position: 100% 100%; opacity: 0.8; }
+            50% { background-position: 0% 0%; opacity: 1; }
+            100% { background-position: 100% 100%; opacity: 0.8; }
+        }
+        @keyframes diagonal-flow-1 {
+            from { --bg-pos-x1: 0px; --bg-pos-y1: 0px; }
+            to { --bg-pos-x1: 100px; --bg-pos-y1: 100px; }
+        }
+        @keyframes diagonal-flow-2 {
+            from { --bg-pos-x2: 0px; --bg-pos-y2: 0px; }
+            to { --bg-pos-x2: -100px; --bg-pos-y2: 100px; }
+        }
+        
+        h1, h2, h3, p, .nav-link, .skill-badge, .email-link, .fab, .fas, .btn-secondary {
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- Custom Fonts --- */
+        h1, h2, h3 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--color-text-primary);
+            font-weight: 700;
+        }
+
+        #typing-text, .email-link {
+            font-family: 'Source Code Pro', monospace;
+            color: var(--typing-text-color);
+            /* Adjusted text-shadow for better visibility with subtle green */
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 0 0 15px var(--typing-text-color);
+        }
+
+        /* Blinking Cursor for Typing Effect */
+        .blinking-cursor {
+            font-family: 'Source Code Pro', monospace;
+            color: var(--typing-text-color);
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- Text Scramble Styling --- */
+        #typing-text .scrambled-char {
+            color: var(--scramble-char-color);
+            opacity: 0.7;
+        }
+
+
+        /* --- Dynamic Header --- */
+        .dynamic-header {
+            background: rgba(15, 15, 15, 0.5); /* More transparent background */
+            backdrop-filter: blur(12px); /* Stronger blur */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border-subtle);
+            transform: translateY(-100%); /* Start off-screen */
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out, background 0.2s ease; /* Faster */
+            z-index: 50; /* Ensure header is above main content */
+            display: flex; /* Ensure flexbox for alignment */
+            align-items: center; /* Vertically center items */
+            justify-content: center; /* Horizontally center content by default */
+        }
+        .dynamic-header.show {
+            transform: translateY(0%);
+            opacity: 1;
+            background: rgba(15, 15, 15, 0.8); /* Slightly more opaque when shown */
+        }
+        /* General rule for all <a> tags to hide default cursor */
+        a {
+            cursor: none !important;
+        }
+        .header-nav-link {
+            position: relative;
+            color: var(--color-text-secondary);
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Adjusted transition for smoother feel */
+            font-size: 1.1rem; /* Slightly larger font */
+            padding-bottom: 8px; /* Space for underline */
+        }
+        .header-nav-link:hover {
+            color: var(--color-accent-secondary);
+            text-shadow: 0 0 8px var(--color-accent-secondary); /* Subtle text glow on hover */
+        }
+        /* Underline effect for header nav links */
+        .header-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; /* Position at the bottom of the link */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; /* Start invisible */
+            height: 2px; /* Thickness of the underline */
+            background-color: var(--color-accent-secondary); /* Color of the underline */
+            transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out; /* Faster */
+            border-radius: 1px;
+        }
+        .header-nav-link:hover::after {
+            width: 100%; /* Expand to full width on hover */
+            background-color: var(--color-accent-secondary); /* Consistent color */
+        }
+        .header-nav-link.active {
+            color: var(--color-accent-primary);
+            font-weight: 700; /* Bolder for active */
+            text-shadow: 0 0 15px var(--color-accent-primary); /* Stronger glow for active */
+        }
+        .header-nav-link.active::after {
+            width: 100%; /* Always full width for active */
+            background-color: var(--color-accent-primary); /* Primary accent color for active */
+        }
+
+        /* Adjust mobile menu toggle for better visibility */
+        .mobile-menu-toggle {
+            font-size: 1.5rem; /* Larger icon */
+            padding: 0.75rem; /* More padding */
+            border-radius: 0.75rem; /* More rounded */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Subtle shadow */
+            transition: all 0.2s ease;
+            margin-left: auto; /* Push to the right on mobile */
+            cursor: none !important; /* Hide default cursor on mobile menu toggle */
+        }
+        .mobile-menu-toggle:hover {
+            background-color: rgba(76, 175, 80, 0.2); /* Subtle green background on hover */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            background: var(--color-bg-medium);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-right: 1px solid var(--color-border-subtle);
+            cursor: none !important; /* Hide default cursor on mobile sidebar */
+        }
+        .mobile-sidebar .nav-link {
+            border-left: 5px solid transparent;
+            cursor: none !important; /* Hide default cursor on mobile nav links */
+        }
+        .mobile-sidebar .nav-link.active, .mobile-sidebar .nav-link:hover {
+            border-left-color: var(--color-accent-primary);
+        }
+
+        /* --- Glass Panels (Content Containers) --- */
+        .glass-panel {
+            background: rgba(15, 15, 15, 0.5); /* 50% transparent */
+            backdrop-filter: blur(15px); /* Stronger blur */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--color-border-subtle);
+            box-shadow: 0 18px 45px var(--color-shadow-strong); /* Larger, softer shadow */
+            border-radius: 1.5rem; /* More rounded corners */
+            cursor: none !important; /* Hide default cursor on glass panels */
+        }
+
+        /* --- Section Reveal Animation --- */
+        .section-container {
+            opacity: 0;
+            transform: translateY(70px) scale(0.97); /* More pronounced initial state */
+            filter: blur(15px); /* Stronger initial blur */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out; /* Faster */
+        }
+        .section-container.animate-reveal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* --- Buttons (Radial Glow Effect) --- */
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            font-weight: 600;
+            padding: 0.8rem 2.8rem; /* Larger padding */
+            transition: all 0.3s ease-in-out; /* Faster */
+            z-index: 1;
+            cursor: none !important; /* Hide default cursor on buttons */
+        }
+        .btn-primary {
+            background-color: var(--color-accent-primary);
+            color: var(--color-bg-dark);
+            box-shadow: none; /* Removed box-shadow */
+            text-shadow: none; /* Removed text-shadow */
+            display: flex; /* Use flexbox for centering content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            padding: 1rem 3rem; /* Slightly larger padding for bigger button */
+            font-size: 1.125rem; /* Making text slightly bigger */
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); /* Stronger standard shadow */
+            color: var(--color-bg-dark);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--color-accent-secondary) 0%, transparent 100%); /* Radial glow */
+            opacity: 0;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out; /* Faster */
+            z-index: -1;
+        }
+        .btn-primary:hover::before {
+            width: 200%;
+            height: 200%;
+            opacity: 0.3;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--color-accent-secondary);
+            color: var(--color-accent-secondary);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3); /* Standard shadow, no glow */
+        }
+        .btn-secondary:hover {
+            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
+            color: var(--color-bg-dark);
+            background-color: var(--color-accent-secondary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Stronger standard shadow */
+        }
+        .btn-secondary:hover::before {
+            background: radial-gradient(circle, var(--color-accent-primary) 0%, transparent 100%);
+        }
+
+
+        /* --- Interactive Cards (Services, Projects, Skills, Education) --- */
+        .content-card, .project-item, .skill-card, .education-skill-card { /* Removed #home .glass-panel as it's handled separately */
+            position: relative;
+            overflow: hidden; /* Crucial to contain the radial gradient */
+            background-color: rgba(15, 15, 15, 0.5); /* 50% transparent */
+            border: 1px solid var(--color-border-subtle);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease; /* For border and shadow */
+            box-shadow: 0 10px 30px var(--color-shadow-light);
+            border-radius: 1.5rem;
+            z-index: 1;
+            cursor: none !important; /* Hide default cursor on these cards */
+        }
+
+        /* Pseudo-element for the radial glow within interactive elements */
+        .content-card::after, .project-item::after, .skill-card::after, .education-skill-card::after, #home .glass-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; /* Position relative to parent */
+            left: 0; /* Position relative to parent */
+            width: 100%; /* Cover the entire parent element */
+            height: 100%; /* Cover the entire parent element */
+            border-radius: 1.5rem; /* Match parent's border-radius */
+            
+            /* Radial gradient origin now follows mouse coordinates (set by JS) */
+            background:
+                radial-gradient(circle at var(--local-mouse-x) var(--local-mouse-y), var(--color-accent-primary) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.05) 2px, transparent 2px, transparent 10px),
+                repeating-linear-gradient(90deg, rgba(102, 187, 106, 0.05) 0%, rgba(102, 187, 106, 0.05) 2px, transparent 2px, transparent 10px);
+            
+            background-size: 100% 100%, 100% 100%, 100% 100%; /* All layers cover the 100%x100% pseudo-element */
+            background-repeat: no-repeat, repeat, repeat;
+            background-blend-mode: overlay;
+
+            opacity: var(--local-glow-opacity, 0); /* Controlled by JS for local glow */
+            pointer-events: none; /* Ensure it doesn't block mouse events on the card content */
+            z-index: -1; /* Place behind content */
+            transition: opacity 0.3s ease-out; /* Smooth fade in/out */
+            
+            /* Animate background-position for the binary patterns only */
+            /* Define custom properties for animation targets */
+            --bg-pos-x1: 0px;
+            --bg-pos-y1: 0px;
+            --bg-pos-x2: 0px;
+            --bg-pos-y2: 0px;
+
+            /* Apply animated background positions */
+            background-position: center center, var(--bg-pos-x1) var(--bg-pos-y1), var(--bg-pos-x2) var(--bg-pos-y2);
+            animation: binary-scroll-1 10s linear infinite, binary-scroll-2 12s linear infinite reverse;
+        }
+
+        /* Keyframes for animating the custom properties */
+        @keyframes binary-scroll-1 {
+            from { --bg-pos-x1: 0px; --bg-pos-y1: 0px; }
+            to { --bg-pos-x1: 100px; --bg-pos-y1: 100px; }
+        }
+
+        @keyframes binary-scroll-2 {
+            from { --bg-pos-x2: 0px; --bg-pos-y2: 0px; }
+            to { --bg-pos-x2: -100px; --bg-pos-y2: 100px; }
+        }
+
+        /* Removed transform properties from content-card and project-item hover */
+        .content-card:hover {
+            box-shadow: 0 15px 40px var(--color-shadow-strong);
+            border-color: var(--color-accent-primary);
+        }
+        .project-item:hover {
+            box-shadow: 0 25px 60px var(--color-shadow-strong);
+            border-color: var(--color-accent-secondary);
+        }
+
+
+        .content-card .fas {
+            color: var(--color-accent-primary);
+            text-shadow: none; /* Removed glow from icons */
+        }
+
+        /* --- Project Section Layout --- */
+        .project-item .fas, .project-item .fab {
+            color: var(--color-accent-secondary);
+            text-shadow: none; /* Removed glow from icons */
+        }
+        .btn-project {
+            background-color: var(--color-accent-primary);
+            color: var(--color-bg-dark);
+            font-weight: bold;
+            padding: 0.8rem 1.6rem;
+            border-radius: 1rem;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: none; /* Removed box-shadow */
+            text-shadow: none; /* Removed text-shadow */
+            display: inline-block; /* Ensure text-align works */
+            cursor: none !important; /* Hide default cursor on project buttons */
+        }
+        .btn-project:hover {
+            background-color: var(--color-accent-secondary);
+            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Stronger standard shadow */
+        }
+        
+        /* --- Skill Badge (New Design) --- */
+        .skill-card {
+            background: rgba(15, 15, 15, 0.5); /* 50% transparent */
+            border: 1px solid var(--color-border-subtle);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centered content */
+            text-align: center; /* Centered text */
+            transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Removed transform transition */
+            box-shadow: 0 10px 30px var(--color-shadow-light); /* Standard shadow, no glow */
+            min-height: 200px;
+            justify-content: center;
+            cursor: none !important; /* Hide default cursor on skill cards */
+        }
+        .skill-card:hover {
+            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
+            box-shadow: 0 20px 50px var(--color-shadow-strong); /* Stronger standard shadow */
+            border-color: var(--color-accent-primary);
+        }
+
+        .skill-card .skill-icon {
+            color: var(--color-accent-secondary);
+            text-shadow: none; /* Removed glow from icons */
+            margin-bottom: 1rem;
+            font-size: 3.5rem;
+        }
+        .skill-card .skill-name {
+            font-weight: 600;
+            font-size: 1.35rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.6rem;
+        }
+        .skill-card .skill-description {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* Specific adjustments for the education skill-card */
+        .education-skill-card {
+            text-align: center; /* Centered content */
+            align-items: center; /* Centered items */
+            padding: 2.5rem; /* Slightly more padding for content */
+            max-width: 700px; /* Max width for better readability */
+            cursor: none !important; /* Hide default cursor on education cards */
+        }
+
+        .education-skill-card .education-entry-title {
+            font-weight: 700;
+            font-size: 1.5rem; /* Larger font for institution names */
+            color: var(--color-text-primary);
+            margin-bottom: 0.4rem;
+            text-align: center; /* Ensure title is centered */
+            width: 100%; /* Take full width */
+        }
+
+        .education-skill-card .education-details-text {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem; /* Space between entries */
+            text-align: center; /* Ensure details are centered */
+            width: 100%; /* Take full width */
+        }
+
+        .education-skill-card .education-details-text:last-of-type {
+            margin-bottom: 0; /* No margin after the last detail block */
+        }
+
+        .education-skill-card .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-border-subtle);
+            margin: 1.5rem auto; /* Centered horizontal divider */
+        }
+
+        /* List styling for education details */
+        .education-details-list {
+            list-style: none; /* Remove default bullet */
+            padding-left: 0;
+            margin-top: 0.5rem;
+            text-align: left; /* Left-align list items for readability */
+            width: 100%; /* Ensure it takes full width within the centered container */
+        }
+
+        .education-details-list li {
+            position: relative;
+            padding-left: 1.5rem; /* Space for custom bullet */
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-align: left; /* Ensure list item text is left-aligned */
+        }
+
+        .education-details-list li::before {
+            content: '\2022'; /* Unicode for a solid bullet point */
+            color: var(--color-accent-secondary); /* Color for the bullet */
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+
+        /* --- Contact Section --- */
+        .contact-icon-link {
+            color: var(--color-text-secondary);
+            transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+            cursor: none !important; /* Hide default cursor on contact icons */
+        }
+        .contact-icon-link:hover {
+            color: var(--color-accent-primary);
+            transform: translateY(-10px);
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Standard shadow, no glow */
+        }
+        .email-link { /* Specific rule for the email link */
+            cursor: none !important;
+        }
+
+        /* --- Mobile Menu Toggle --- */
+        .mobile-menu-toggle {
+            background-color: var(--color-bg-medium);
+            border: 1px solid var(--color-border-subtle);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            cursor: none !important; /* Hide default cursor on mobile menu toggle */
+        }
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            background: var(--color-bg-medium);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-right: 1px solid var(--color-border-subtle);
+            cursor: none !important; /* Hide default cursor on mobile sidebar */
+        }
+        .mobile-sidebar .nav-link {
+            border-left: 5px solid transparent;
+            cursor: none !important; /* Hide default cursor on mobile nav links */
+        }
+        .mobile-sidebar .nav-link.active, .mobile-sidebar .nav-link:hover {
+            border-left-color: var(--color-accent-primary);
+        }
+
+        /* --- Custom Cursor Styling (Global Triangle) --- */
+        #custom-cursor {
+            position: fixed; /* Stays in viewport */
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: 9999;
+            width: 0; /* No width for the container itself */
+            height: 0; /* No height for the container itself */
+            opacity: 1; /* Always visible */
+        }
+
+        #custom-cursor::before { /* The central triangle */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            /* Creates a left-pointing triangle (mirrored from previous right-pointing) */
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 14px solid var(--color-accent-primary); /* Green triangle */
+            
+            /* Rotate to 15 degrees (375 - 360) and adjust origin for tip to be at mouse pointer */
+            transform: translate(-50%, -50%) rotate(165deg); /* Center and rotate */
+            transform-origin: 50% 50%; /* Ensure rotation is around its center */
+        }
+
+        /* --- Local Aura on Interactive Elements (::after pseudo-element) --- */
+        .content-card::after, .project-item::after, .skill-card::after, .education-skill-card::after, #home .glass-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; /* Position relative to parent */
+            left: 0; /* Position relative to parent */
+            width: 100%; /* Cover the entire parent element */
+            height: 100%; /* Cover the entire parent element */
+            border-radius: 1.5rem; /* Match parent's border-radius */
+            
+            /* Radial gradient origin now follows mouse coordinates (set by JS) */
+            background:
+                radial-gradient(circle at var(--local-mouse-x) var(--local-mouse-y), var(--color-accent-primary) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.05) 2px, transparent 2px, transparent 10px),
+                repeating-linear-gradient(90deg, rgba(102, 187, 106, 0.05) 0%, rgba(102, 187, 106, 0.05) 2px, transparent 2px, transparent 10px);
+            
+            background-size: 100% 100%, 100% 100%, 100% 100%; /* All layers cover the 100%x100% pseudo-element */
+            background-repeat: no-repeat, repeat, repeat;
+            background-blend-mode: overlay;
+
+            opacity: var(--local-glow-opacity, 0); /* Controlled by JS for local glow */
+            pointer-events: none; /* Ensure it doesn't block mouse events on the card content */
+            z-index: -1; /* Place behind content */
+            transition: opacity 0.3s ease-out; /* Smooth fade in/out */
+            
+            /* Animate background-position for the binary patterns only */
+            /* Define custom properties for animation targets */
+            --bg-pos-x1: 0px;
+            --bg-pos-y1: 0px;
+            --bg-pos-x2: 0px;
+            --bg-pos-y2: 0px;
+
+            /* Apply animated background positions */
+            background-position: center center, var(--bg-pos-x1) var(--bg-pos-y1), var(--bg-pos-x2) var(--bg-pos-y2);
+            animation: binary-scroll-1 10s linear infinite, binary-scroll-2 12s linear infinite reverse;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="custom-cursor" class="fixed pointer-events-none z-[9999]"></div>
+
+    <div id="particle-container"></div>
+
+    <header id="dynamic-header" class="fixed top-0 left-0 right-0 z-40 py-4 px-6 md:px-12 flex items-center justify-center">
+        <nav class="hidden md:flex space-x-10">
+            <a href="#home" class="header-nav-link text-lg font-medium active">Home</a>
+            <a href="#services" class="header-nav-link text-lg font-medium">Areas of Focus</a>
+            <a href="#projects" class="header-nav-link text-lg font-medium">Projects</a>
+            <a href="#skills" class="header-nav-link text-lg font-medium">Skills</a>
+            <a href="#education" class="nav-link text-lg font-medium">Education</a>
+            <a href="#contact" class="nav-link text-lg font-medium">Contact</a>
+        </nav>
+        <button id="menu-toggle" class="md:hidden mobile-menu-toggle p-2 rounded-md text-color-text-primary ml-auto">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/70 z-30 hidden md:hidden"></div>
+    <aside id="mobile-sidebar" class="mobile-sidebar fixed top-0 left-0 w-64 h-full z-40 flex flex-col p-6 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold mt-4 text-color-text-primary">TIRTHA NATH</h1>
+        </div>
+        <nav class="flex-grow flex flex-col space-y-2">
+            <a href="#home" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Home</a>
+            <a href="#services" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Areas of Focus</a>
+            <a href="#projects" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Projects</a>
+            <a href="#skills" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Skills</a>
+            <a href="#education" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Education</a>
+            <a href="#contact" class="nav-link flex items-center gap-4 px-4 py-2 rounded-lg">Contact</a>
+        </nav>
+    </aside>
+
+
+    <main class="relative z-10">
+        <div class="container mx-auto px-4">
+            <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center py-16 section-container animate-reveal">
+                <div class="glass-panel p-8 md:p-12 max-w-4xl w-full">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-color-text-primary">TIRTHA NATH</h1>
+                    <p class="text-2xl md:text-3xl font-semibold mb-8">
+                        <span id="typing-text"></span><span class="blinking-cursor">|</span>
+                    </p>
+                    <p class="text-lg max-w-3xl mx-auto leading-relaxed mb-10 text-color-text-secondary">
+                        Driven Computer Science Engineering student skilled in Java, Python, and C, with a strong enthusiasm for
+                        crafting software and solving complex problems. I'm also adept at UI/UX design using Figma, and actively
+                        exploring machine learning and developing web solutions. Eager to find an internship that will challenge
+                        me and help me grow technically. My experience includes a UI/UX design internship where I honed my skills in wireframing, prototyping, and user research. I'm a fast learner, adaptable, and possess strong problem-solving abilities, coupled with a keen eye for detail and a goal-oriented mindset. In my free time, you'll find me focusing on fitness, working out, and exploring my creative side through drawing.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <a href="#projects" class="btn-primary">View My Projects</a>
+                        <a href="https://www.linkedin.com/in/tirtha-nath" target="_blank" class="btn-secondary flex items-center justify-center">
+                            Connect on LinkedIn <i class="fab fa-linkedin ml-2 text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="py-20 section-container">
+                <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Areas of Focus</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="content-card p-8 text-center">
+                        <i class="fas fa-palette text-5xl mb-4 text-color-accent-primary"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-color-text-primary">UI/UX Design</h3>
+                        <p class="text-color-text-secondary">Crafting intuitive and engaging user experiences through wireframing, prototyping, and visual design using Figma.</p>
+                    </div>
+                    <div class="content-card p-8 text-center">
+                        <i class="fas fa-brain text-5xl mb-4 text-color-accent-primary"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Machine Learning</h3>
+                        <p class="text-color-text-secondary">Exploring and developing foundational machine learning models for various applications.</p>
+                    </div>
+                    <div class="content-card p-8 text-center">
+                        <i class="fas fa-globe text-5xl mb-4 text-color-accent-primary"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Web Solutions</h3>
+                        <p class="text-color-text-secondary">Developing robust web applications and integrating various web technologies.</p>
+                    </div>
+                    <div class="content-card p-8 text-center">
+                        <i class="fas fa-code text-5xl mb-4 text-color-accent-primary"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Software Development</h3>
+                        <p class="text-color-text-secondary">Applying strong programming skills in Python, Java, and C/C++ to build efficient software.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="py-20 section-container">
+                <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-building-columns text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Bank Management System in Java</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">Developed a graphical user interface (GUI) based banking application with comprehensive account management, transactions, and data encryption for enhanced security.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/Bank-management-system" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-desktop text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">CPU Scheduling Algorithm Simulator</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">A project with a GUI interface that helps users understand and and allows for the implementation of different CPU scheduling algorithms.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/CPU-Scheduling-algorithm-simulator" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-image text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Image Colorization using Machine Learning and Python</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">A tool developed with Python that uses a pre-trained machine learning algorithm for image colorization, executed with the help of the Tkinter module.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/Image-colourizer" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-microchip text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">SPM Design using OpenLane in Linux</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">Designed a Single-Port RAM (SPM) using the OpenLane automated RTL-to-GDSII flow, implementing the design from RTL code through key stages: synthesis, placement, routing, and final GDSII generation.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/SPM-Design-in-Openlane" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-ambulance text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Smart Ambulance Routing System</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">Designed an intelligent web-based tool to find the nearest hospital with the fastest route for ambulances. Utilizes real-time geolocation, OpenStreetMap data, OSRM routing, a sleek UI, and a voice assistant for accessibility, aiming to reduce response time and potentially save lives.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/Ambulance-Routing-System" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-item flex flex-col p-6 md:p-8">
+                        <div class="text-center mb-4 flex-shrink-0">
+                            <i class="fas fa-cash-register text-7xl md:text-8xl text-color-accent-secondary"></i>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-color-text-primary">Supermarket Billing System</h3>
+                            <p class="mb-4 text-color-text-secondary flex-grow min-h-[80px]">Python (Tkinter) desktop application with MySQL backend for comprehensive billing and inventory management. Features user authentication, customer/product management (including low stock alerts), and real-time PDF bill generation. Ensures data integrity with transactions and foreign key constraints, offering a modern UI/UX.</p>
+                            <div class="mt-auto text-center">
+                                <a href="https://github.com/TIRTHANATH20/Supermarket-Billing-System" target="_blank" class="btn-project">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="py-20 section-container">
+                <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">My Skillset</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 max-w-7xl mx-auto">
+                    <div class="skill-card">
+                        <i class="fab fa-python text-5xl skill-icon"></i>
+                        <p class="skill-name">Python</p>
+                        <p class="skill-description">Proficient in scripting, web development, and machine learning applications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-java text-5xl skill-icon"></i>
+                        <p class="skill-name">Java</p>
+                        <p class="skill-description">Strong foundation in object-oriented programming and GUI development.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-file-code text-5xl skill-icon"></i>
+                        <p class="skill-name">C/C++</p>
+                        <p class="skill-description">Solid understanding of fundamental programming concepts and data structures.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database text-5xl skill-icon"></i>
+                        <p class="skill-name">MySQL</p>
+                        <p class="skill-description">Experienced in database design, management, and query optimization.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-figma text-5xl skill-icon"></i>
+                        <p class="skill-name">Figma</p>
+                        <p class="skill-description">Adept at UI/UX design, wireframing, and prototyping for various applications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-robot text-5xl skill-icon"></i>
+                        <p class="skill-name">Machine Learning</p>
+                        <p class="skill-description">Foundational knowledge in ML algorithms and their practical application.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-linux text-5xl skill-icon"></i>
+                        <p class="skill-name">Linux</p>
+                        <p class="skill-description">Intermediate proficiency in Linux environment and command-line tools.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-microchip text-5xl skill-icon"></i>
+                        <p class="skill-name">VLSI/PCB Design</p>
+                        <p class="skill-description">Strong foundation in VLSI principles and practical PCB design experience.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-tools text-5xl skill-icon"></i>
+                        <p class="skill-name">OpenLane/EDA</p>
+                        <p class="skill-description">Experience with OpenLane, Cadence, and other EDA software for hardware design.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-github text-5xl skill-icon"></i>
+                        <p class="skill-name">Git/GitHub</p>
+                        <p class="skill-description">Proficient in version control, collaborative development, and repository management.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-comments text-5xl skill-icon"></i>
+                        <p class="skill-name">Communication</p>
+                        <p class="skill-description">Effective verbal and written communication for technical and team discussions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-lightbulb text-5xl skill-icon"></i>
+                        <p class="skill-name">Problem Solving</p>
+                        <p class="skill-description">Creative and analytical approach to identifying and resolving complex issues.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="py-20 section-container">
+                <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Education</h2>
+                <div class="flex flex-col items-center max-w-3xl mx-auto">
+                    <div class="skill-card education-skill-card w-full">
+                        <h3 class="education-entry-title">SRM University, Kattankulathur, Tamil Nadu</h3>
+                        <ul class="education-details-list">
+                            <li>B.Tech in Computer Science Engineering</li>
+                            <li>2023 - 2027</li>
+                            <li>CGPA: 9.16</li>
+                        </ul>
+                        <div class="divider"></div>
+                        <h3 class="education-entry-title">Accord School, Tirupati, Andhra Pradesh</h3>
+                        <ul class="education-details-list">
+                            <li>Class XII (CBSE): 75.2% (2023)</li>
+                            <li>Class X (CBSE): 84.2% (2021)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="py-20 section-container">
+                <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Get In Touch</h2>
+                <div class="max-w-xl mx-auto text-center glass-panel p-8">
+                    <a href="mailto:tirthanath2006@gmail.com" class="email-link mb-8 inline-block text-2xl">
+                        tirthanath2006@gmail.com
+                    </a>
+                    <p class="text-lg mb-8 text-color-text-secondary">Feel free to reach out directly or connect with me on other platforms.</p>
+                    <div class="flex justify-center items-center space-x-8 text-3xl">
+                        <a href="https://www.linkedin.com/in/tirtha-nath" target="_blank" class="contact-icon-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" class="contact-icon-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="tel:+918247228028" class="contact-icon-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- The modal container and its content have been completely removed -->
+
+    <script>
+        // --- SCRIPT SETUP ---
+        
+        // --- Custom Mouse Cursor Logic (Global Triangle) ---
+        const customCursor = document.getElementById('custom-cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        const speed = 1; // Set speed to 1 for direct, no-lag follow
+
+        document.addEventListener('mousemove', e => {
+            // Update mouseX/Y with current clientX/Y (viewport coordinates)
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            // Show cursor on mouse move
+            customCursor.style.opacity = '1';
+            // For direct follow, update position immediately on mousemove
+            customCursor.style.left = mouseX + window.scrollX + 'px';
+            customCursor.style.top = mouseY + window.scrollY + 'px';
+        });
+
+        // Hide cursor when mouse leaves the document
+        document.addEventListener('mouseleave', () => {
+            customCursor.style.opacity = '0';
+        });
+
+        // --- Text Scramble Effect ---
+        (function() {
+            class TextScramble {
+                constructor(el) {
+                    this.el = el;
+                    this.chars = '!@#$%^&*()_+{}[]|;:,.<>?/`~1234567890';
+                    this.update = this.update.bind(this);
+                }
+                setText(newText) {
+                    const oldText = this.el.innerText;
+                    const length = Math.max(oldText.length, newText.length);
+                    const promise = new Promise((resolve) => this.resolve = resolve);
+                    this.queue = [];
+                    for (let i = 0; i < length; i++) {
+                        const from = oldText[i] || '';
+                        const to = newText[i] || '';
+                        const start = Math.floor(Math.random() * 20);
+                        const end = start + Math.floor(Math.random() * 20);
+                        this.queue.push({ from, to, start, end });
+                    }
+                    cancelAnimationFrame(this.frameRequest);
+                    this.frame = 0;
+                    this.update();
+                    return promise;
+                }
+                update() {
+                    let output = '';
+                    let complete = 0;
+                    for (let i = 0, n = this.queue.length; i < n; i++) {
+                        let { from, to, start, end, char } = this.queue[i];
+                        if (this.frame >= end) {
+                            complete++;
+                            output += to;
+                        } else if (this.frame >= start) {
+                            if (!char || Math.random() < 0.28) {
+                                char = this.randomChar();
+                                this.queue[i].char = char;
+                            }
+                            output += `<span class="scrambled-char">${char}</span>`;
+                        } else {
+                            output += from;
+                        }
+                    }
+                    this.el.innerHTML = output;
+                    if (complete === this.queue.length) {
+                        this.resolve();
+                    } else {
+                        this.frameRequest = requestAnimationFrame(this.update);
+                        this.frame++;
+                    }
+                    }
+                randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
+            }
+            window.TextScramble = TextScramble;
+        })();
+
+        // --- Mobile Menu Toggle ---
+        function toggleMobileMenu() {
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            mobileSidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            mobileSidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+
+        // Utility function to wait for an element to exist in the DOM
+        function waitForElement(elementId, callback) {
+            function checkElement() {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    callback(element);
+                } else {
+                    requestAnimationFrame(checkElement); // Keep polling
+                }
+            }
+            requestAnimationFrame(checkElement); // Start polling
+        }
+
+
+        // --- SCRIPT INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Text Scramble Effect
+            const phrases = ["Crafting Software", "Solving Complex Problems", "Designing User Experiences", "Building Web Solutions"];
+            const typingTextElement = document.getElementById('typing-text');
+            const fx = new window.TextScramble(typingTextElement);
+            let counter = 0;
+            const next = () => { fx.setText(phrases[counter]).then(() => { setTimeout(next, 1500); }); counter = (counter + 1) % phrases.length; };
+            next();
+
+            // Dynamic Header Logic
+            const dynamicHeader = document.getElementById('dynamic-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    dynamicHeader.classList.add('show');
+                } else {
+                    dynamicHeader.classList.remove('show');
+                }
+            });
+
+            // Active Link & Scroll-triggered Section Animation
+            const sections = document.querySelectorAll('section');
+            const headerNavLinks = document.querySelectorAll('.header-nav-link');
+            const mobileNavLinks = document.querySelectorAll('#mobile-sidebar .nav-link');
+            
+            waitForElement('menu-toggle', (element) => {
+                element.addEventListener('click', toggleMobileMenu);
+            });
+
+            waitForElement('mobile-sidebar-overlay', (element) => {
+                element.addEventListener('click', closeMobileMenu);
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-reveal');
+                        headerNavLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                        mobileNavLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -30% 0px' });
+
+            sections.forEach(section => observer.observe(section));
+
+            // --- Local Aura on Interactive Elements (::after pseudo-element) ---
+            const interactiveElements = document.querySelectorAll('.content-card, .project-item, .skill-card, .education-skill-card, #home .glass-panel');
+
+            interactiveElements.forEach(element => {
+                element.addEventListener('mousemove', e => {
+                    const rect = element.getBoundingClientRect();
+                    // Calculate mouse position relative to the element's top-left corner
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    // Set CSS custom properties for the local radial-gradient's position
+                    element.style.setProperty('--local-mouse-x', `${x}px`);
+                    element.style.setProperty('--local-mouse-y', `${y}px`);
+                });
+
+                element.addEventListener('mouseenter', () => {
+                    // On mouse enter, set opacity to make the local glow visible
+                    element.style.setProperty('--local-glow-opacity', '0.25');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    // On mouse leave, reset opacity to hide the local glow
+                    element.style.setProperty('--local-glow-opacity', '0');
+                });
+            });
+        }); // End of DOMContentLoaded
+
+        // The projectDetails object is still needed to get the GitHub URLs
+        const projectDetails = {
+            'bank-management': { title: 'Bank Management System in Java', description: 'Developed a graphical user interface (GUI) based banking application with comprehensive account management, transactions, and data encryption for enhanced security.', tech: ['Java', 'GUI (Swing/JavaFX)', 'Data Encryption'], github: 'https://github.com/TIRTHANATH20/Bank-management-system' },
+            'cpu-scheduler': { title: 'CPU Scheduling Algorithm Simulator', description: 'A project with a GUI interface that helps users understand and and allows for the implementation of different CPU scheduling algorithms.', tech: ['Python', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/CPU-Scheduling-algorithm-simulator' },
+            'image-colorization': { title: 'Image Colorization using Machine Learning and Python', description: 'A tool developed with Python that uses a pre-trained machine learning algorithm for image colorization, executed with the help of the Tkinter module.', tech: ['Python', 'Machine Learning', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/Image-colourizer' },
+            'ambulance-routing': { title: 'Smart Ambulance Routing System', description: 'Designed an intelligent web-based tool to find the nearest hospital with the fastest route for ambulances. Utilizes real-time geolocation, OpenStreetMap data, OSRM routing, a sleek UI, and a voice assistant for accessibility, aiming to reduce response time and potentially save lives.', tech: ['Web Development', 'OpenStreetMap', 'OSRM', 'Voice Assistant'], github: 'https://github.com/TIRTHANATH20/Ambulance-Routing-System', live: 'https://smartambulanceroutingsystem.onrender.com/' },
+            'spm-design': { title: 'Single-Port RAM (SPM) Design using OpenLane in Linux', description: 'Designed a Single-Port RAM (SPM) using the OpenLane automated RTL-to-GDSII flow, implementing the design from RTL code through key stages: synthesis, placement, routing, and final GDSII generation. Utilized the OpenLane framework for physical design and verification.', tech: ['VLSI Design', 'OpenLane', 'Linux', 'RTL'], github: 'https://github.com/TIRTHANATH20/SPM-Design-in-Openlane' },
+            'supermarket-billing': { title: 'Supermarket Billing System', description: 'Python (Tkinter) desktop application with MySQL backend for comprehensive billing and inventory management. Features user authentication, customer/product management (including low stock alerts), and real-time PDF bill generation. Ensures data integrity with transactions and foreign key constraints, offering a modern UI/UX.', tech: ['Python', 'Tkinter', 'MySQL'], github: 'https://github.com/TIRTHANATH20/Supermarket-Billing-System' }
+        };
+        
+    </script>
+</body>
+</html>
