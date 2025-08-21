@@ -274,6 +274,12 @@
                 align-items: center; /* Center text vertically */
                 justify-content: center; /* Center text horizontally */
             }
+            /* More aggressive min-height for very small screens if needed */
+            @media (max-width: 480px) {
+                #home .glass-panel p.font-semibold {
+                    min-height: 2.2rem; /* Slightly smaller min-height for very narrow screens */
+                }
+            }
         }
 
         /* --- Section Reveal Animation --- */
