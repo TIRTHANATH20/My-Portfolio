@@ -375,30 +375,30 @@
         }
 
 
-        /* --- Interactive Cards (Services, Projects, Skills, Education) --- */
-        .content-card, .project-item, .skill-card, .education-skill-card { /* Removed #home .glass-panel as it's handled separately */
+        /* --- Interactive Cards (Content Containers) --- */
+        .content-card, .project-item, .skill-card, .education-skill-card {
             position: relative;
-            overflow: hidden; /* Crucial to contain the radial gradient */
-            background-color: rgba(15, 15, 15, 0.5); /* 50% transparent */
+            overflow: hidden;
+            background-color: rgba(15, 15, 15, 0.5);
             border: 1px solid var(--color-border-subtle);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s ease; /* For border and shadow */
+            transition: all 0.3s ease;
             box-shadow: 0 10px 30px var(--color-shadow-light);
             border-radius: 1.5rem;
             z-index: 1;
-            cursor: none !important; /* Hide default cursor on these cards */
+            cursor: none !important;
         }
 
         /* Pseudo-element for the radial glow within interactive elements */
         .content-card::after, .project-item::after, .skill-card::after, .education-skill-card::after, #home .glass-panel::after {
             content: '';
             position: absolute;
-            top: 0; /* Position relative to parent */
-            left: 0; /* Position relative to parent */
-            width: 100%; /* Cover the entire parent element */
-            height: 100%; /* Cover the entire parent element */
-            border-radius: 1.5rem; /* Match parent's border-radius */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
             
             /* Radial gradient origin now follows mouse coordinates (set by JS) */
             background:
@@ -406,23 +406,21 @@
                 repeating-linear-gradient(0deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.05) 2px, transparent 2px, transparent 10px),
                 repeating-linear-gradient(90deg, rgba(102, 187, 106, 0.05) 0%, rgba(102, 187, 106, 0.05) 2px, transparent 2px, transparent 10px);
             
-            background-size: 100% 100%, 100% 100%, 100% 100%; /* All layers cover the 100%x100% pseudo-element */
+            background-size: 100% 100%, 100% 100%, 100% 100%;
             background-repeat: no-repeat, repeat, repeat;
             background-blend-mode: overlay;
 
-            opacity: var(--local-glow-opacity, 0); /* Controlled by JS for local glow */
-            pointer-events: none; /* Ensure it doesn't block mouse events on the card content */
-            z-index: -1; /* Place behind content */
-            transition: opacity 0.3s ease-out; /* Smooth fade in/out */
+            opacity: var(--local-glow-opacity, 0);
+            pointer-events: none;
+            z-index: -1;
+            transition: opacity 0.3s ease-out;
             
             /* Animate background-position for the binary patterns only */
-            /* Define custom properties for animation targets */
             --bg-pos-x1: 0px;
             --bg-pos-y1: 0px;
             --bg-pos-x2: 0px;
             --bg-pos-y2: 0px;
 
-            /* Apply animated background positions */
             background-position: center center, var(--bg-pos-x1) var(--bg-pos-y1), var(--bg-pos-x2) var(--bg-pos-y2);
             animation: binary-scroll-1 10s linear infinite, binary-scroll-2 12s linear infinite reverse;
         }
@@ -451,13 +449,13 @@
 
         .content-card .fas {
             color: var(--color-accent-primary);
-            text-shadow: none; /* Removed glow from icons */
+            text-shadow: none;
         }
 
         /* --- Project Section Layout --- */
         .project-item .fas, .project-item .fab {
             color: var(--color-accent-secondary);
-            text-shadow: none; /* Removed glow from icons */
+            text-shadow: none;
         }
         .btn-project {
             background-color: var(--color-accent-primary);
@@ -466,20 +464,20 @@
             padding: 0.8rem 1.6rem;
             border-radius: 1rem;
             transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: none; /* Removed box-shadow */
-            text-shadow: none; /* Removed text-shadow */
-            display: inline-block; /* Ensure text-align works */
-            cursor: none !important; /* Hide default cursor on project buttons */
+            box-shadow: none;
+            text-shadow: none;
+            display: inline-block;
+            cursor: none !important;
         }
         .btn-project:hover {
             background-color: var(--color-accent-secondary);
-            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Stronger standard shadow */
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
         
         /* --- Skill Badge (New Design) --- */
         .skill-card {
-            background: rgba(15, 15, 15, 0.5); /* 50% transparent */
+            background: rgba(15, 15, 15, 0.5);
             border: 1px solid var(--color-border-subtle);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -487,30 +485,30 @@
             padding: 1.8rem;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centered content */
-            text-align: center; /* Centered text */
-            transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Removed transform transition */
-            box-shadow: 0 10px 30px var(--color-shadow-light); /* Standard shadow, no glow */
+            align-items: center;
+            text-align: center;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px var(--color-shadow-light);
             min-height: 200px;
             justify-content: center;
-            cursor: none !important; /* Hide default cursor on skill cards */
+            cursor: none !important;
         }
         .skill-card:hover {
-            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
-            box-shadow: 0 20px 50px var(--color-shadow-strong); /* Stronger standard shadow */
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 20px 50px var(--color-shadow-strong);
             border-color: var(--color-accent-primary);
         }
 
         .skill-card .skill-icon {
             color: var(--color-accent-secondary);
-            text-shadow: none; /* Removed glow from icons */
+            text-shadow: none;
             margin-bottom: 1rem;
             font-size: 3.5rem;
         }
         /* Adjusted skill icon size for mobile */
         @media (max-width: 768px) {
             .skill-card .skill-icon {
-                font-size: 2.8rem; /* Slightly smaller icons on mobile */
+                font-size: 2.8rem;
             }
         }
 
@@ -523,7 +521,7 @@
         /* Adjusted skill name font size for mobile */
         @media (max-width: 768px) {
             .skill-card .skill-name {
-                font-size: 1.2rem; /* Slightly smaller skill names on mobile */
+                font-size: 1.2rem;
             }
         }
 
@@ -535,38 +533,38 @@
         /* Adjusted skill description font size for mobile */
         @media (max-width: 768px) {
             .skill-card .skill-description {
-                font-size: 0.85rem; /* Slightly smaller skill descriptions on mobile */
+                font-size: 0.85rem;
             }
         }
         
         /* Specific adjustments for the education skill-card */
         .education-skill-card {
-            text-align: center; /* Centered content */
-            align-items: center; /* Centered items */
-            padding: 2.5rem; /* Slightly more padding for content */
-            max-width: 700px; /* Max width for better readability */
-            cursor: none !important; /* Hide default cursor on education cards */
+            text-align: center;
+            align-items: center;
+            padding: 2.5rem;
+            max-width: 700px;
+            cursor: none !important;
         }
         /* Adjusted education card padding for mobile */
         @media (max-width: 768px) {
             .education-skill-card {
-                padding: 1.5rem; /* Reduced padding for mobile education card */
+                padding: 1.5rem;
             }
         }
 
 
         .education-skill-card .education-entry-title {
             font-weight: 700;
-            font-size: 1.5rem; /* Larger font for institution names */
+            font-size: 1.5rem;
             color: var(--color-text-primary);
             margin-bottom: 0.4rem;
-            text-align: center; /* Ensure title is centered */
-            width: 100%; /* Take full width */
+            text-align: center;
+            width: 100%;
         }
         /* Adjusted education entry title font size for mobile */
         @media (max-width: 768px) {
             .education-skill-card .education-entry-title {
-                font-size: 1.3rem; /* Smaller title for mobile education entries */
+                font-size: 1.3rem;
             }
         }
 
@@ -574,43 +572,43 @@
             font-size: 1rem;
             color: var(--color-text-secondary);
             line-height: 1.6;
-            margin-bottom: 1rem; /* Space between entries */
-            text-align: center; /* Ensure details are centered */
-            width: 100%; /* Take full width */
+            margin-bottom: 1rem;
+            text-align: center;
+            width: 100%;
         }
 
         .education-skill-card .education-details-text:last-of-type {
-            margin-bottom: 0; /* No margin after the last detail block */
+            margin-bottom: 0;
         }
 
         .education-skill-card .divider {
             width: 100%;
             height: 1px;
             background-color: var(--color-border-subtle);
-            margin: 1.5rem auto; /* Centered horizontal divider */
+            margin: 1.5rem auto;
         }
 
         /* List styling for education details */
         .education-details-list {
-            list-style: none; /* Remove default bullet */
+            list-style: none;
             padding-left: 0;
             margin-top: 0.5rem;
-            text-align: left; /* Left-align list items for readability */
-            width: 100%; /* Ensure it takes full width within the centered container */
+            text-align: left;
+            width: 100%;
         }
 
         .education-details-list li {
             position: relative;
-            padding-left: 1.5rem; /* Space for custom bullet */
+            padding-left: 1.5rem;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
             line-height: 1.4;
-            text-align: left; /* Ensure list item text is left-aligned */
+            text-align: left;
         }
         /* Adjusted education list item font size for mobile */
         @media (max-width: 768px) {
             .education-details-list li {
-                font-size: 0.85rem; /* Smaller list items for mobile education entries */
+                font-size: 0.85rem;
             }
         }
 
@@ -619,26 +617,63 @@
         .contact-icon-link {
             color: var(--color-text-secondary);
             transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
-            cursor: none !important; /* Hide default cursor on contact icons */
+            cursor: none !important;
         }
         .contact-icon-link:hover {
             color: var(--color-accent-primary);
             transform: translateY(-10px);
-            text-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Standard shadow, no glow */
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
         }
         .email-link { /* Specific rule for the email link */
             cursor: none !important;
+            display: block; /* Ensure it takes full width for text-align to work */
+            text-align: center; /* Center the text */
+            white-space: nowrap; /* Forces text onto a single line */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Show ellipsis for truncated text */
         }
         /* Adjusted email link font size for mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 768px) { /* Tablet and smaller */
             .email-link {
-                font-size: 1.5rem; /* Smaller email link for mobile */
+                font-size: 1rem; /* Base font size for most mobile */
+            }
+        }
+        @media (max-width: 480px) { /* Common phone breakpoint */
+            .email-link {
+                font-size: 0.85rem; /* Smaller for narrow phones */
+            }
+        }
+        @media (max-width: 360px) { /* Very small phones like iPhone SE 1st gen */
+            .email-link {
+                font-size: 0.75rem; /* Even smaller to guarantee fit */
             }
         }
         /* Adjusted contact icons size for mobile */
         @media (max-width: 768px) {
             .contact-icon-link {
-                font-size: 2rem; /* Smaller contact icons for mobile */
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 480px) { /* Even smaller phones */
+            .contact-icon-link {
+                font-size: 1.5rem;
+            }
+        }
+        /* Adjusted spacing for contact icons on mobile */
+        .contact-section-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem; /* Default gap */
+        }
+        @media (max-width: 768px) {
+            .contact-section-icons {
+                gap: 1.5rem; /* Reduced gap for mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-section-icons {
+                gap: 1rem; /* Further reduced gap for very small screens */
             }
         }
 
@@ -649,7 +684,7 @@
             border: 1px solid var(--color-border-subtle);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            cursor: none !important; /* Hide default cursor on mobile menu toggle */
+            cursor: none !important;
         }
         /* Mobile Sidebar */
         .mobile-sidebar {
@@ -657,11 +692,11 @@
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border-right: 1px solid var(--color-border-subtle);
-            cursor: none !important; /* Hide default cursor on mobile sidebar */
+            cursor: none !important;
         }
         .mobile-sidebar .nav-link {
             border-left: 5px solid transparent;
-            cursor: none !important; /* Hide default cursor on mobile nav links */
+            cursor: none !important;
         }
         .mobile-sidebar .nav-link.active, .mobile-sidebar .nav-link:hover {
             border-left-color: var(--color-accent-primary);
@@ -669,14 +704,13 @@
 
         /* --- Custom Cursor Styling (Global Triangle) --- */
         #custom-cursor {
-            position: fixed; /* Stays in viewport */
-            pointer-events: none; /* Allows clicks to pass through */
+            position: fixed;
+            pointer-events: none;
             z-index: 9999;
-            width: 0; /* No width for the container itself */
-            height: 0; /* No height for the container itself */
-            opacity: 1; /* Always visible */
+            width: 0;
+            height: 0;
+            opacity: 1; /* Default to visible for desktop */
         }
-
         #custom-cursor::before { /* The central triangle */
             content: '';
             position: absolute;
@@ -684,25 +718,39 @@
             left: 0;
             width: 0;
             height: 0;
-            /* Creates a left-pointing triangle (mirrored from previous right-pointing) */
             border-top: 8px solid transparent;
             border-bottom: 8px solid transparent;
             border-right: 14px solid var(--color-accent-primary); /* Green triangle */
-            
-            /* Rotate to 15 degrees (375 - 360) and adjust origin for tip to be at mouse pointer */
-            transform: translate(-50%, -50%) rotate(165deg); /* Center and rotate */
-            transform-origin: 50% 50%; /* Ensure rotation is around its center */
+            transform: translate(-50%, -50%) rotate(165deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Hide custom cursor on mobile devices */
+        @media (max-width: 768px) {
+            #custom-cursor {
+                display: none; /* Hide the custom cursor on screens up to 768px wide */
+            }
+            /* Also ensure the default cursor is visible on touch devices */
+            body {
+                cursor: auto !important; /* Re-enable default cursor on mobile */
+            }
+            a {
+                cursor: pointer !important; /* Re-enable default pointer cursor on links */
+            }
+            button {
+                cursor: pointer !important; /* Re-enable default pointer cursor on buttons */
+            }
         }
 
         /* --- Local Aura on Interactive Elements (::after pseudo-element) --- */
         .content-card::after, .project-item::after, .skill-card::after, .education-skill-card::after, #home .glass-panel::after {
             content: '';
             position: absolute;
-            top: 0; /* Position relative to parent */
-            left: 0; /* Position relative to parent */
-            width: 100%; /* Cover the entire parent element */
-            height: 100%; /* Cover the entire parent element */
-            border-radius: 1.5rem; /* Match parent's border-radius */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
             
             /* Radial gradient origin now follows mouse coordinates (set by JS) */
             background:
@@ -710,23 +758,21 @@
                 repeating-linear-gradient(0deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.05) 2px, transparent 2px, transparent 10px),
                 repeating-linear-gradient(90deg, rgba(102, 187, 106, 0.05) 0%, rgba(102, 187, 106, 0.05) 2px, transparent 2px, transparent 10px);
             
-            background-size: 100% 100%, 100% 100%, 100% 100%; /* All layers cover the 100%x100% pseudo-element */
+            background-size: 100% 100%, 100% 100%, 100% 100%;
             background-repeat: no-repeat, repeat, repeat;
             background-blend-mode: overlay;
 
-            opacity: var(--local-glow-opacity, 0); /* Controlled by JS for local glow */
-            pointer-events: none; /* Ensure it doesn't block mouse events on the card content */
-            z-index: -1; /* Place behind content */
-            transition: opacity 0.3s ease-out; /* Smooth fade in/out */
+            opacity: var(--local-glow-opacity, 0);
+            pointer-events: none;
+            z-index: -1;
+            transition: opacity 0.3s ease-out;
             
             /* Animate background-position for the binary patterns only */
-            /* Define custom properties for animation targets */
             --bg-pos-x1: 0px;
             --bg-pos-y1: 0px;
             --bg-pos-x2: 0px;
             --bg-pos-y2: 0px;
 
-            /* Apply animated background positions */
             background-position: center center, var(--bg-pos-x1) var(--bg-pos-y1), var(--bg-pos-x2) var(--bg-pos-y2);
             animation: binary-scroll-1 10s linear infinite, binary-scroll-2 12s linear infinite reverse;
         }
@@ -984,18 +1030,18 @@
             <section id="contact" class="py-20 section-container">
                 <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Get In Touch</h2>
                 <div class="max-w-xl mx-auto text-center glass-panel p-8">
-                    <a href="mailto:tirthanath2006@gmail.com" class="email-link mb-8 inline-block text-2xl">
+                    <a href="mailto:tirthanath2006@gmail.com" class="email-link mb-8 block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                         tirthanath2006@gmail.com
                     </a>
                     <p class="text-lg mb-8 text-color-text-secondary">Feel free to reach out directly or connect with me on other platforms.</p>
-                    <div class="flex justify-center items-center space-x-8 text-3xl">
-                        <a href="https://www.linkedin.com/in/tirtha-nath" target="_blank" class="contact-icon-link">
+                    <div class="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 contact-section-icons">
+                        <a href="https://www.linkedin.com/in/tirtha-nath" target="_blank" class="contact-icon-link text-2xl sm:text-3xl">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://github.com/yourusername" target="_blank" class="contact-icon-link">
+                        <a href="https://github.com/yourusername" target="_blank" class="contact-icon-link text-2xl sm:text-3xl">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="tel:+918247228028" class="contact-icon-link">
+                        <a href="tel:+918247228028" class="contact-icon-link text-2xl sm:text-3xl">
                             <i class="fas fa-phone"></i>
                         </a>
                     </div>
