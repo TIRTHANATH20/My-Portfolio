@@ -631,6 +631,7 @@
             white-space: nowrap; /* Forces text onto a single line */
             overflow: hidden; /* Hide overflowing content */
             text-overflow: ellipsis; /* Show ellipsis for truncated text */
+            max-width: 100%; /* Ensure it doesn't exceed parent width */
         }
         /* Adjusted email link font size for mobile */
         @media (max-width: 768px) { /* Tablet and smaller */
@@ -646,6 +647,11 @@
         @media (max-width: 360px) { /* Very small phones like iPhone SE 1st gen */
             .email-link {
                 font-size: 0.75rem; /* Even smaller to guarantee fit */
+            }
+        }
+        @media (max-width: 320px) { /* Smallest common phone breakpoint */
+            .email-link {
+                font-size: 0.7rem; /* Aggressively small for tiny screens */
             }
         }
         /* Adjusted contact icons size for mobile */
@@ -1029,7 +1035,7 @@
 
             <section id="contact" class="py-20 section-container">
                 <h2 class="text-4xl font-bold mb-12 text-center text-color-text-primary">Get In Touch</h2>
-                <div class="max-w-xl mx-auto text-center glass-panel p-8">
+                <div class="max-w-xl mx-auto text-center glass-panel p-4 sm:p-6 md:p-8">
                     <a href="mailto:tirthanath2006@gmail.com" class="email-link mb-8 block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                         tirthanath2006@gmail.com
                     </a>
