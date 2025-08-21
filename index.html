@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&family=Source+Code+Pro:500&display=swap" rel="stylesheet">
+    <!-- Updated font imports for Inter and Source Code Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Ben 10 Inspired Theme - More Subtle Green */
@@ -40,7 +41,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif; /* Changed back to Inter */
+            font-family: 'Inter', sans-serif; /* Changed to Inter for all general text */
             background-color: var(--color-bg-dark); /* Solid dark base background */
             /* New Abstract Digital Background */
             background-image:
@@ -95,9 +96,9 @@
 
         /* --- Custom Fonts --- */
         h1, h2, h3 {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Inter', sans-serif; /* Changed to Inter for headings */
             color: var(--color-text-primary);
-            font-weight: 700;
+            font-weight: 400; /* Set to normal weight for headings */
         }
 
         /* Adjusted h1 size for smaller screens */
@@ -125,6 +126,13 @@
             font-family: 'Source Code Pro', monospace;
             color: var(--typing-text-color);
             animation: blink 1s step-end infinite;
+        }
+
+        /* Hide blinking cursor on mobile devices */
+        @media (max-width: 768px) {
+            .blinking-cursor {
+                display: none;
+            }
         }
 
         @keyframes blink {
@@ -225,7 +233,7 @@
         }
         .mobile-sidebar .nav-link {
             border-left: 5px solid transparent;
-            cursor: none !important; /* Hide default cursor on mobile nav links */
+            cursor: none !important;
         }
         .mobile-sidebar .nav-link.active, .mobile-sidebar .nav-link:hover {
             border-left-color: var(--color-accent-primary);
@@ -254,6 +262,16 @@
         @media (min-width: 768px) { /* md breakpoint and up */
             #home .glass-panel {
                 padding: 3rem; /* Original larger padding for desktop */
+            }
+        }
+
+        /* Ensure the parent paragraph of typing text has a stable height on mobile */
+        @media (max-width: 768px) {
+            #home .glass-panel p.font-semibold { /* Targeting the specific paragraph */
+                min-height: 2.5rem; /* Adjust based on largest phrase height + line-height */
+                display: flex; /* Use flex to center text vertically if needed */
+                align-items: center; /* Center text vertically */
+                justify-content: center; /* Center text horizontally */
             }
         }
 
@@ -360,10 +378,10 @@
             }
         }
         .btn-secondary:hover {
-            transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
+            transform: translateY(-1px) scale(1.01);
             color: var(--color-bg-dark);
             background-color: var(--color-accent-secondary);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Stronger standard shadow */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
         .btn-secondary:hover::before {
             width: 200%;
@@ -636,7 +654,7 @@
         /* Adjusted email link font size for mobile */
         @media (max-width: 768px) { /* Tablet and smaller */
             .email-link {
-                font-size: 0.9rem; /* Smaller base font size for most mobile */
+                font-size: 0.85rem; /* Base font size for most mobile */
             }
         }
         @media (max-width: 480px) { /* Common phone breakpoint */
@@ -646,12 +664,12 @@
         }
         @media (max-width: 360px) { /* Very small phones like iPhone SE 1st gen */
             .email-link {
-                font-size: 0.65rem; /* Aggressively small to guarantee fit */
+                font-size: 0.68rem; /* Aggressively small to guarantee fit */
             }
         }
         @media (max-width: 320px) { /* Smallest common phone breakpoint */
             .email-link {
-                font-size: 0.6rem; /* Extremely small for tiny screens */
+                font-size: 0.62rem; /* Extremely small for tiny screens */
             }
         }
         /* Adjusted contact icons size for mobile */
@@ -1175,7 +1193,24 @@
             const typingTextElement = document.getElementById('typing-text');
             const fx = new window.TextScramble(typingTextElement);
             let counter = 0;
-            const next = () => { fx.setText(phrases[counter]).then(() => { setTimeout(next, 1500); }); counter = (counter + 1) % phrases.length; };
+            const next = () => {
+                // Check if on mobile (max-width: 768px)
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    typingTextElement.innerText = phrases[counter]; // Just set the text directly
+                    // Ensure blinking cursor is hidden on mobile when text is static
+                    const blinkingCursor = document.querySelector('.blinking-cursor');
+                    if (blinkingCursor) {
+                        blinkingCursor.style.display = 'none';
+                    }
+                    setTimeout(next, 1500); // Wait and then go to the next phrase
+                } else {
+                    // On desktop, use the scramble effect
+                    fx.setText(phrases[counter]).then(() => {
+                        setTimeout(next, 1500);
+                    });
+                }
+                counter = (counter + 1) % phrases.length;
+            };
             next();
 
             // Dynamic Header Logic
