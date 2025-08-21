@@ -507,16 +507,36 @@
             margin-bottom: 1rem;
             font-size: 3.5rem;
         }
+        /* Adjusted skill icon size for mobile */
+        @media (max-width: 768px) {
+            .skill-card .skill-icon {
+                font-size: 2.8rem; /* Slightly smaller icons on mobile */
+            }
+        }
+
         .skill-card .skill-name {
             font-weight: 600;
             font-size: 1.35rem;
             color: var(--color-text-primary);
             margin-bottom: 0.6rem;
         }
+        /* Adjusted skill name font size for mobile */
+        @media (max-width: 768px) {
+            .skill-card .skill-name {
+                font-size: 1.2rem; /* Slightly smaller skill names on mobile */
+            }
+        }
+
         .skill-card .skill-description {
             font-size: 0.95rem;
             color: var(--color-text-secondary);
             line-height: 1.5;
+        }
+        /* Adjusted skill description font size for mobile */
+        @media (max-width: 768px) {
+            .skill-card .skill-description {
+                font-size: 0.85rem; /* Slightly smaller skill descriptions on mobile */
+            }
         }
         
         /* Specific adjustments for the education skill-card */
@@ -527,6 +547,13 @@
             max-width: 700px; /* Max width for better readability */
             cursor: none !important; /* Hide default cursor on education cards */
         }
+        /* Adjusted education card padding for mobile */
+        @media (max-width: 768px) {
+            .education-skill-card {
+                padding: 1.5rem; /* Reduced padding for mobile education card */
+            }
+        }
+
 
         .education-skill-card .education-entry-title {
             font-weight: 700;
@@ -535,6 +562,12 @@
             margin-bottom: 0.4rem;
             text-align: center; /* Ensure title is centered */
             width: 100%; /* Take full width */
+        }
+        /* Adjusted education entry title font size for mobile */
+        @media (max-width: 768px) {
+            .education-skill-card .education-entry-title {
+                font-size: 1.3rem; /* Smaller title for mobile education entries */
+            }
         }
 
         .education-skill-card .education-details-text {
@@ -574,14 +607,11 @@
             line-height: 1.4;
             text-align: left; /* Ensure list item text is left-aligned */
         }
-
-        .education-details-list li::before {
-            content: '\2022'; /* Unicode for a solid bullet point */
-            color: var(--color-accent-secondary); /* Color for the bullet */
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-weight: bold;
+        /* Adjusted education list item font size for mobile */
+        @media (max-width: 768px) {
+            .education-details-list li {
+                font-size: 0.85rem; /* Smaller list items for mobile education entries */
+            }
         }
 
 
@@ -599,6 +629,19 @@
         .email-link { /* Specific rule for the email link */
             cursor: none !important;
         }
+        /* Adjusted email link font size for mobile */
+        @media (max-width: 768px) {
+            .email-link {
+                font-size: 1.5rem; /* Smaller email link for mobile */
+            }
+        }
+        /* Adjusted contact icons size for mobile */
+        @media (max-width: 768px) {
+            .contact-icon-link {
+                font-size: 2rem; /* Smaller contact icons for mobile */
+            }
+        }
+
 
         /* --- Mobile Menu Toggle --- */
         .mobile-menu-toggle {
