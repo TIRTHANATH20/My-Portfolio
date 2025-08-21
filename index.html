@@ -100,6 +100,19 @@
             font-weight: 700;
         }
 
+        /* Adjusted h1 size for smaller screens */
+        @media (max-width: 640px) { /* Tailwind's 'sm' breakpoint */
+            h1 {
+                font-size: 3.25rem; /* Smaller size for very small screens */
+            }
+        }
+        @media (min-width: 641px) and (max-width: 768px) { /* Between sm and md */
+            h1 {
+                font-size: 4rem; /* Slightly larger for small tablets/larger phones */
+            }
+        }
+
+
         #typing-text, .email-link {
             font-family: 'Source Code Pro', monospace;
             color: var(--typing-text-color);
@@ -229,6 +242,21 @@
             cursor: none !important; /* Hide default cursor on glass panels */
         }
 
+        /* Adjusted padding for home glass panel on smaller screens */
+        #home .glass-panel {
+            padding: 1.5rem; /* Smaller padding for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint and up */
+            #home .glass-panel {
+                padding: 2rem; /* Restore slightly larger padding for small tablets */
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint and up */
+            #home .glass-panel {
+                padding: 3rem; /* Original larger padding for desktop */
+            }
+        }
+
         /* --- Section Reveal Animation --- */
         .section-container {
             opacity: 0;
@@ -241,6 +269,25 @@
             transform: translateY(0) scale(1);
             filter: blur(0);
         }
+
+        /* Adjusted section padding for smaller screens */
+        section {
+            padding-top: 4rem; /* Smaller top/bottom padding on mobile */
+            padding-bottom: 4rem; /* Smaller top/bottom padding on mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint and up */
+            section {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint and up */
+            section {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+        }
+
 
         /* --- Buttons (Radial Glow Effect) --- */
         .btn-primary, .btn-secondary {
@@ -261,9 +308,17 @@
             display: flex; /* Use flexbox for centering content */
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
-            padding: 1rem 3rem; /* Slightly larger padding for bigger button */
-            font-size: 1.125rem; /* Making text slightly bigger */
+            /* Adjusted padding for smaller screens */
+            padding: 0.8rem 2.5rem; /* Slightly smaller for mobile */
+            font-size: 1rem; /* Slightly smaller text for mobile */
         }
+        @media (min-width: 640px) { /* sm breakpoint and up */
+            .btn-primary {
+                padding: 1rem 3rem; /* Original larger padding for desktop */
+                font-size: 1.125rem; /* Original larger text for desktop */
+            }
+        }
+
         .btn-primary:hover {
             transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); /* Stronger standard shadow */
@@ -294,6 +349,15 @@
             border: 2px solid var(--color-accent-secondary);
             color: var(--color-accent-secondary);
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3); /* Standard shadow, no glow */
+            /* Adjusted padding for smaller screens */
+            padding: 0.8rem 2.5rem; /* Slightly smaller for mobile */
+            font-size: 1rem; /* Slightly smaller text for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint and up */
+            .btn-secondary {
+                padding: 0.8rem 2.8rem; /* Original larger padding for desktop */
+                font-size: 1.125rem; /* Original larger text for desktop */
+            }
         }
         .btn-secondary:hover {
             transform: translateY(-1px) scale(1.01); /* Bare minimum lift */
@@ -302,6 +366,11 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Stronger standard shadow */
         }
         .btn-secondary:hover::before {
+            width: 200%;
+            height: 200%;
+            opacity: 0.3;
+        }
+        .btn-secondary::before {
             background: radial-gradient(circle, var(--color-accent-primary) 0%, transparent 100%);
         }
 
@@ -901,8 +970,6 @@
         const customCursor = document.getElementById('custom-cursor');
         let mouseX = 0;
         let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
         const speed = 1; // Set speed to 1 for direct, no-lag follow
 
         document.addEventListener('mousemove', e => {
@@ -1088,15 +1155,15 @@
             });
         }); // End of DOMContentLoaded
 
-        // The projectDetails object is still needed to get the GitHub URLs
-        const projectDetails = {
-            'bank-management': { title: 'Bank Management System in Java', description: 'Developed a graphical user interface (GUI) based banking application with comprehensive account management, transactions, and data encryption for enhanced security.', tech: ['Java', 'GUI (Swing/JavaFX)', 'Data Encryption'], github: 'https://github.com/TIRTHANATH20/Bank-management-system' },
-            'cpu-scheduler': { title: 'CPU Scheduling Algorithm Simulator', description: 'A project with a GUI interface that helps users understand and and allows for the implementation of different CPU scheduling algorithms.', tech: ['Python', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/CPU-Scheduling-algorithm-simulator' },
-            'image-colorization': { title: 'Image Colorization using Machine Learning and Python', description: 'A tool developed with Python that uses a pre-trained machine learning algorithm for image colorization, executed with the help of the Tkinter module.', tech: ['Python', 'Machine Learning', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/Image-colourizer' },
-            'ambulance-routing': { title: 'Smart Ambulance Routing System', description: 'Designed an intelligent web-based tool to find the nearest hospital with the fastest route for ambulances. Utilizes real-time geolocation, OpenStreetMap data, OSRM routing, a sleek UI, and a voice assistant for accessibility, aiming to reduce response time and potentially save lives.', tech: ['Web Development', 'OpenStreetMap', 'OSRM', 'Voice Assistant'], github: 'https://github.com/TIRTHANATH20/Ambulance-Routing-System', live: 'https://smartambulanceroutingsystem.onrender.com/' },
-            'spm-design': { title: 'Single-Port RAM (SPM) Design using OpenLane in Linux', description: 'Designed a Single-Port RAM (SPM) using the OpenLane automated RTL-to-GDSII flow, implementing the design from RTL code through key stages: synthesis, placement, routing, and final GDSII generation. Utilized the OpenLane framework for physical design and verification.', tech: ['VLSI Design', 'OpenLane', 'Linux', 'RTL'], github: 'https://github.com/TIRTHANATH20/SPM-Design-in-Openlane' },
-            'supermarket-billing': { title: 'Supermarket Billing System', description: 'Python (Tkinter) desktop application with MySQL backend for comprehensive billing and inventory management. Features user authentication, customer/product management (including low stock alerts), and real-time PDF bill generation. Ensures data integrity with transactions and foreign key constraints, offering a modern UI/UX.', tech: ['Python', 'Tkinter', 'MySQL'], github: 'https://github.com/TIRTHANATH20/Supermarket-Billing-System' }
-        };
+        // The projectDetails object is no longer needed since direct links are used
+        // const projectDetails = {
+        //     'bank-management': { title: 'Bank Management System in Java', description: 'Developed a graphical user interface (GUI) based banking application with comprehensive account management, transactions, and data encryption for enhanced security.', tech: ['Java', 'GUI (Swing/JavaFX)', 'Data Encryption'], github: 'https://github.com/TIRTHANATH20/Bank-management-system' },
+        //     'cpu-scheduler': { title: 'CPU Scheduling Algorithm Simulator', description: 'A project with a GUI interface that helps users understand and and allows for the implementation of different CPU scheduling algorithms.', tech: ['Python', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/CPU-Scheduling-algorithm-simulator' },
+        //     'image-colorization': { title: 'Image Colorization using Machine Learning and Python', description: 'A tool developed with Python that uses a pre-trained machine learning algorithm for image colorization, executed with the help of the Tkinter module.', tech: ['Python', 'Machine Learning', 'Tkinter'], github: 'https://github.com/TIRTHANATH20/Image-colourizer' },
+        //     'ambulance-routing': { title: 'Smart Ambulance Routing System', description: 'Designed an intelligent web-based tool to find the nearest hospital with the fastest route for ambulances. Utilizes real-time geolocation, OpenStreetMap data, OSRM routing, a sleek UI, and a voice assistant for accessibility, aiming to reduce response time and potentially save lives.', tech: ['Web Development', 'OpenStreetMap', 'OSRM', 'Voice Assistant'], github: 'https://github.com/TIRTHANATH20/Ambulance-Routing-System', live: 'https://smartambulanceroutingsystem.onrender.com/' },
+        //     'spm-design': { title: 'Single-Port RAM (SPM) Design using OpenLane in Linux', description: 'Designed a Single-Port RAM (SPM) using the OpenLane automated RTL-to-GDSII flow, implementing the design from RTL code through key stages: synthesis, placement, routing, and final GDSII generation. Utilized the OpenLane framework for physical design and verification.', tech: ['VLSI Design', 'OpenLane', 'Linux', 'RTL'], github: 'https://github.com/TIRTHANATH20/SPM-Design-in-Openlane' },
+        //     'supermarket-billing': { title: 'Supermarket Billing System', description: 'Python (Tkinter) desktop application with MySQL backend for comprehensive billing and inventory management. Features user authentication, customer/product management (including low stock alerts), and real-time PDF bill generation. Ensures data integrity with transactions and foreign key constraints, offering a modern UI/UX.', tech: ['Python', 'Tkinter', 'MySQL'], github: 'https://github.com/TIRTHANATH20/Supermarket-Billing-System' }
+        // };
         
     </script>
 </body>
