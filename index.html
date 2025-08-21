@@ -129,11 +129,11 @@
         }
 
         /* Hide blinking cursor on mobile devices */
-        @media (max-width: 768px) {
+        /* @media (max-width: 768px) {
             .blinking-cursor {
                 display: none;
             }
-        }
+        } */ /* Removed this to allow blinking cursor on mobile */
 
         @keyframes blink {
             from, to { opacity: 1; }
@@ -1195,21 +1195,10 @@
             const fx = new window.TextScramble(typingTextElement);
             let counter = 0;
             const next = () => {
-                // Check if on mobile (max-width: 768px)
-                if (window.matchMedia("(max-width: 768px)").matches) {
-                    typingTextElement.innerText = phrases[counter]; // Just set the text directly
-                    // Ensure blinking cursor is hidden on mobile when text is static
-                    const blinkingCursor = document.querySelector('.blinking-cursor');
-                    if (blinkingCursor) {
-                        blinkingCursor.style.display = 'none';
-                    }
-                    setTimeout(next, 1500); // Wait and then go to the next phrase
-                } else {
-                    // On desktop, use the scramble effect
-                    fx.setText(phrases[counter]).then(() => {
-                        setTimeout(next, 1500);
-                    });
-                }
+                // The animation will now run on all screen sizes
+                fx.setText(phrases[counter]).then(() => {
+                    setTimeout(next, 1500);
+                });
                 counter = (counter + 1) % phrases.length;
             };
             next();
