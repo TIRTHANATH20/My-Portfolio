@@ -268,8 +268,8 @@
         /* Ensure the parent paragraph of typing text has a stable height on mobile */
         @media (max-width: 768px) {
             #home .glass-panel p.font-semibold { /* Targeting the specific paragraph */
-                min-height: 2.5rem; /* Adjust based on largest phrase height + line-height */
-                line-height: 1.2; /* Explicit line-height for stability */
+                min-height: 2.5rem; /* Set a fixed height that accommodates the tallest phrase */
+                line-height: 1.2; /* Ensures consistent line spacing */
                 display: flex; /* Use flex to center text vertically if needed */
                 align-items: center; /* Center text vertically */
                 justify-content: center; /* Center text horizontally */
@@ -277,7 +277,7 @@
             /* More aggressive min-height for very small screens if needed */
             @media (max-width: 480px) {
                 #home .glass-panel p.font-semibold {
-                    min-height: 2.2rem; /* Slightly smaller min-height for very narrow screens */
+                    min-height: 2.2rem; /* Adjusted for smaller font sizes on very narrow screens */
                 }
             }
         }
